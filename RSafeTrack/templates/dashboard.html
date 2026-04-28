@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <nav style="background: #333; padding: 10px; margin-bottom: 20px;">
+    <a href="/" style="color: white; margin-right: 20px; text-decoration: none;">➕ Ajouter une dépense</a>
+    <a href="/dashboard" style="color: white; text-decoration: none;">📊 Voir le Dashboard</a>
+</nav>
+</head>
+<body>
+
+<h1>Dashboard RSafeTrack</h1>
+
+<p><strong>Total:</strong> {{ Total }}</p>
+<p><strong>Moyenne</strong> {{ Moyenne }}</p>
+
+<h2>Dépenses par catégorie</h2>
+
+
+<canvas id="pieChart"></canvas>
+
+<h2>Évolution des dépenses</h2>
+<canvas id="lineChart"></canvas>
+ <div class="budget-section">
+    <form action="/set_budget" method="POST" style="display: flex; gap: 10px;">
+        <input type="number" name="budget" placeholder="Ex: 50000" required>
+        <button type="submit" style="width: auto;">Définir</button>
+    </form>
+</div>
+
+
+
+<script>
+       const categoriesData = {{ Categories | tojson }};
+       console.log(categoriesData);
+
+    // 2. On utilise "c" comme dans ton code
+    const labels = categoriesData.map(c => c[0]); // c[0] est le nom (ex: "Loisir")
+    const dataValues = categoriesData.map(c => c[1]); // c[1] est le montant (ex: 2500)
+
+
+
+    // 3. On crée le graphique
+    new Chart(document.getElementById("pieChart"), {
+        type: 'pie', // Bien mettre un "t" minuscule ici !
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Mes Dépenses',
+                data: dataValues,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+            }]
+        }
+    });
+</script>
