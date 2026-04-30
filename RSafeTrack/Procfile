@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:8080 RSafeTrack:RSafeTrack
+web: gunicorn --bind 0.0.0.0:5000 RSafeTrack:RSafeTrack
