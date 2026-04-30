@@ -31,7 +31,7 @@ def init_db():
 
 init_db()
 # Page principale (formulaire)
-@App.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         Montant = request.form["montant"]
@@ -53,7 +53,7 @@ def index():
         return redirect("/dashboard")
 
     return render_template("RSafeTrack.html")
-@App.route('/set_budget', methods=['POST'])
+@app.route('/set_budget', methods=['POST'])
 def set_budget():
     Budget = request.form.get('budget')
     Conn = get_db()
@@ -66,7 +66,7 @@ def set_budget():
 
 
 # Dashboard (analyse)
-@App.route("/dashboard")
+@app.route("/dashboard")
 def dashboard():
     Conn = get_db()
 
