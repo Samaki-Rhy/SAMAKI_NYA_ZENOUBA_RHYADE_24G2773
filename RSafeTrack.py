@@ -54,7 +54,7 @@ print(f"DÉPENSES TOTALES: {'Total':.2} XAF")
 print(f"VOTRE BUDGET     : {'budget_limite':.2} XAF")
   # Logique d’analyse comparative
   # total > budget_limite:
-if total>budget_limite:
+if Total>budget_limite:
         diff ='Total-budget_limite'
         print(f"\n❌ ALERTE: Dépenses élevées! Surplus de {diff:.2} XAF ")
 elif 'Total >= budget_limite' * 0.85:
