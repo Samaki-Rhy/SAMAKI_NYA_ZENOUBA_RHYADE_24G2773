@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
 
-App = Flask(__name__)
+app = Flask(__name__)
 
 # Connexion base de données
 def get_db():
@@ -102,4 +102,4 @@ def dashboard():
     )
 
 if __name__ == "__main__":
-    App.run(debug=True)
+    app.run(debug=True)
